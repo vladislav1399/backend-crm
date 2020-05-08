@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+    <div  class="top-search-bar">
+      <input [(ngModel)]="searchProduct"  style="background-color: white" class="form-control" type="text" placeholder="Поиск по штрих - коду">
+    </div>
+  </div>
+</div>
+<div class="table-responsive" >
+        <table class="table"  >
+          <thead class="bg-light">
+          <tr class="border-0">
+            <th class="border-0">Имя</th>
+            <th class="border-0">Цена закупки</th>
+            <th class="border-0">Цена продажи</th>
+<!--            <th class="border-0">Бренд</th>-->
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let product of products | productsFilterBarCode: searchProduct: 'name'"  >
+            <td><a target="_blank" [routerLink]="[product._id]">{{product.name}}</a> </td>
+            <td>{{product.purchasePrice}}</td>
+            <td>{{product.salePrice}}</td>
+<!--            <td>{{product.brand.name}}</td>-->
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+

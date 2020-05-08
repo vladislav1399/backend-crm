@@ -1,0 +1,46 @@
+<!-- Modal category -->
+
+<div style="" class="modal fade" id="exampleModal-3"
+     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 700px">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: deeppink">
+        <h4 style="color: white" class="modal-title" id="exampleModalLabel">Добавление нового бренда</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="brandForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Укажите имя торговой марки</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                formControlName="name"
+                placeholder=""
+              >
+            </div>
+          </div>
+        </div>
+      </form>
+      <div>
+        <h4>Список уже добавленых брендов</h4>
+        <ul>
+          <li *ngFor="let brand of brands">{{brand.name}}</li>
+
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button [disabled]="brandForm.invalid || brandForm.disabled" (click)="addBrand()" type="button" class="btn btn-primary">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>

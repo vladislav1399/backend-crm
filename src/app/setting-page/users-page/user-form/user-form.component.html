@@ -1,0 +1,119 @@
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: #0d4982">
+        <h3 class="modal-title" id="exampleModalCenterTitle" style="color: white">Добавить пользователя</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: white">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="splash-container"
+              [formGroup]="userForm"
+        >
+            <div class="card-body">
+              <div class="card">
+              <div class="form-group">
+                <input
+                  class="form-control
+                   form-control-lg" type="text"
+                  name="nick" required="" placeholder="Имя"
+                  autocomplete="off" formControlName="name">
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg" type="text"
+                  name="nick" required="" placeholder="Фамилия" autocomplete="off"
+                  formControlName="surname">
+              </div>
+              <div class="form-group">
+                <input class="form-control form-control-lg"
+                       type="text" name="nick" required="" placeholder="Телефон"
+                       autocomplete="off"
+                       formControlName="phone">
+              </div>
+              <div class="form-group">
+                <input class="form-control form-control-lg"
+                       id="pass1" type="password" required=""
+                       placeholder="Пароль"
+                       formControlName="password" >
+              </div>
+              <div class="form-group">
+                <input class="form-control form-control-lg"
+                       type="password" required="" placeholder="Еще раз пароль"
+                       formControlName="password2">
+              </div>
+                <div class="form-group">
+                  <label for="accessUser">Должность</label>
+                  <select
+                    id="accessUser"
+                    class="custom-select"
+                    formControlName="accessUser"
+                  >
+                    <option selected disabled>Выберите должность</option>
+                    <option
+                      *ngFor="let profession of professions"
+                      value="{{profession._id}}">
+                      {{profession.professionName}}
+                    </option>
+                  </select>
+                </div>
+
+
+              <div class="form-group">
+                <input class="form-control form-control-lg" value=""
+                       type="text" required placeholder="Ссылка инстаграм"
+                       formControlName="instagramUrl">
+              </div>
+              <div class="form-group">
+                <input class="form-control form-control-lg" value=""
+                       type="text" required placeholder="Зарплата"
+                       formControlName="salary">
+              </div>
+
+                <div class="form-group">
+                  <label for="state">Слкда на котором будет работать</label>
+                  <select
+                    id="state"
+                    class="custom-select"
+                    formControlName="workWarehouse"
+                  >
+                    <option selected disabled>Выберите склад для работы</option>
+                    <option
+                      *ngFor="let warehouse of warehouses"
+                      value="{{warehouse._id}}">
+                      {{warehouse.name}}
+                    </option>
+                  </select>
+                </div>
+                <div>
+                  <input
+                    type="file"
+                    class="dn"
+                    (change)="photoUpload($event)"
+                    #inputFile
+                  >
+                  <button
+                    (click)="triggerClick()"
+                    type="button"
+                    class="waves-effect waves-light btn orange lighten-2 mb2"
+                  >
+                    <i class="material-icons left">backup</i>
+                    Загрузить изображение
+                  </button>
+
+                  <div><img style="width: 250px; height: 250px" src="{{photoPreview}}" alt=""></div>
+                </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" (click)="addUser()" [disabled]="userForm.invalid || userForm.disabled">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>
+

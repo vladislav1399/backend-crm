@@ -1,0 +1,42 @@
+
+<table class="table">
+  <thead class="bg-light">
+  <tr class="border-0">
+    <th class="border-0">#</th>
+    <th class="border-0">Имя</th>
+    <th class="border-0">Дата</th>
+    <th class="border-0">Статус</th>
+    <th >Сумма</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let order of spaceOrders let i = index" >
+    <td>{{i + 1}}</td>
+    <td><a target="_blank" [routerLink]="[order._id]">{{order.client.name}}  {{order.client.surname}}</a></td>
+    <td>{{order.date | date: 'hh:mm / dd-MM-yyyy'}}</td>
+
+    <td  *ngIf="order.status === 'Выполнен'"><span class="badge badge-dark">{{order.status}}</span></td>
+    <td *ngIf="order.status === 'Обработка'"><span class="badge badge-success">{{order.status}}</span></td>
+    <td *ngIf="order.status === 'Оплата'"><span class="badge badge-warning">{{order.status}}</span></td>
+    <td *ngIf="order.status === 'Отмена'"><span class="badge badge-danger">{{order.status}}</span></td>
+    <td *ngIf="order.status === 'Сборка'"><span class="badge badge-primary">{{order.status}}</span></td>
+
+    <td>{{order.allSumOrder}} грн. </td>
+  </tr>
+
+  </tbody>
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="page-header">
+      <h2 class="mb-2">Закупки</h2>
+      <div class="page-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/" class="breadcrumb-link">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Закупки</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<app-loader  *ngIf="loading"></app-loader>
+
+
+  <app-filter-purchase-block
+    [suppliers]="suppliers"
+    (dateChange)="changeDateFilter($event)"
+    (changeFilterPeriod)="changeFilter($event)"
+    (changeStatus)="changeStatusPurchase($event)"
+    (filterSupplier)="checkSupplierFilter($event)">
+
+  </app-filter-purchase-block>
+
+
+<hr style="margin-top: -1%">
+
+<div *ngIf="!loading">
+
+<div class="row">
+
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+      <div class="card-header" style="background-color: sandybrown">
+        <h2 class="mb-0">Список закупок <a routerLink="/purchase/form-purchase" class="btn btn-primary float-right"  id='trigger'>Создать закупку</a></h2>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <app-table-purchase-block  [purchases]="purchases"></app-table-purchase-block>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,123 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+
+<div *ngIf="!loading">
+<div class="page-header">
+  <h2 style="text-align: center" class="pageheader-title"><span style="color: blueviolet">{{supplier.name}}  {{supplier.surname}}</span></h2>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/setting">Настройки</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/setting/supplier">Поставщики</a></li>
+        <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{supplier.name}}  {{supplier.surname}}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left mb-5">
+        <div class="product-details h-100 shadow-sm" [formGroup]="formSupplier">
+          <div class="border-bottom pb-3 mb-3" >
+
+            <h5  class="mb-3">
+              <input class="inp-supplier" type="text" formControlName="name">
+              <input style="margin-left: 4%" class="inp-supplier" type="text" formControlName="surname">
+
+            </h5>
+
+
+          <div style="margin-top: -5%" class="product-rating d-inline-block float-right">
+
+              <h3 class="mb-0 text-primary">{{supplier.amount}} грн.</h3>
+              <span style="font-size: 14px; color: #0b2e13">Сумма покупок</span>
+            </div>
+
+          </div>
+          <div class="product-colors border-bottom">
+            <h4>Контакты</h4>
+            <input  formControlName="contact" style="color: rebeccapurple; font-size: 13px">
+            <input  formControlName="contactTwo" style="margin-left: 2%; color: rebeccapurple; font-size: 13px"><br>
+            <input formControlName="postTown" style="color: rebeccapurple; margin-top: 1%; font-size: 13px">
+          </div>
+          <div class="product-description">
+            <button (click)="saveUpdatedSupplier()"  class="btn btn-success btn-lg btn-block">Сохранить изменения</button>
+            <button  (click)="removeSupplier()"  class="btn btn-warning btn-lg btn-block">Удалить поставщика</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 mb-5 ">
+        <div class="simple-card shadow-sm">
+
+          <ul class="nav nav-tabs" id="myTab5" role="tablist">
+
+            <li class="nav-item">
+              <a class="nav-link active border-left-0" id="product-tab-1" data-toggle="tab" href="#tab-1" role="tab" aria-controls="product" aria-selected="true">Продаваемая продукция</a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" id="product-tab-2" data-toggle="tab" href="#tab-2" role="tab" aria-controls="profile" aria-selected="false">Заметки</a>
+            </li>
+
+
+          </ul>
+
+          <div class="tab-content" id="myTabContent5">
+            <div class="tab-pane fade show active" id="tab-1" role="tabpanel" aria-labelledby="product-tab-1">
+
+              <div class="card-body">
+                <h4>Бренды которые продает</h4>
+                <span class="teg-span" style="margin: 3px" (click)="removeBrand(brandSupplier)" *ngFor="let brandSupplier of supplier.brands" class="badge badge-dark">{{brandSupplier.brandName}}</span>
+              </div>
+              <hr>
+              <div class="card-body">
+                <h4>Добавить бренды</h4>
+                <span id="teg-span"  style="margin: 5px" (click)="addBrand(brand)" *ngFor="let brand of brands" class="badge badge-info">{{brand.name}}</span>
+              </div>
+
+            </div>
+
+
+            <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-tab-2">
+              <form role="form" [formGroup]="reviewForm">
+                <div class="form-group">
+                  <label class="form-control-label">Текст новой заметки</label>
+                  <div class="input-group input-group-merge">
+                    <textarea style="height: 75px" formControlName="text" class="form-control" id="input-email" placeholder="..."> </textarea>
+                  </div>
+                </div>
+                <div class="mt-4"><button (click)="addNewReview()" type="button" class="btn btn-sm btn-primary ">
+                  Добавить
+                </button></div>
+              </form>
+              <div *ngFor="let review of this.supplier.review" class="review-block border-top mt-3 pt-3">
+                <p class="review-text font-italic mb-2">{{review.text}}</p>
+                <div class="rating-star mb-4 text-warning font-12">
+                  {{review.date | date: 'dd-MM-yyyy'}}
+                </div>
+<!--                <span class="text-dark font-weight-bold">Ruby B. Matheny</span><small class="text-mute"> (Company name)</small>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+

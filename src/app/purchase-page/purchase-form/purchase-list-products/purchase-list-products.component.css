@@ -1,0 +1,10 @@
+td, tr, th {
+  padding: 2px;
+}
+
+
+.inp-count{
+  height: 18px;
+  text-align: center;
+  width: 50px;
+}

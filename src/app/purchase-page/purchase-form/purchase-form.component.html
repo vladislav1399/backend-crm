@@ -1,0 +1,85 @@
+
+<div style="margin-top: -0.5%"  class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-12 mb-5">
+  <div class="ecommerce-widget">
+    <app-top-block-form *ngIf="suppliers"
+                        [suppliers]="suppliers"
+                        (statusPurchase)="selectStatus($event)"
+                        (supplierPurchase)="selectSupplier($event)"
+                        (cancellationPurchase)="selectCancellation($event)">
+
+    </app-top-block-form>
+  </div>
+</div>
+
+
+<div class="row" style="margin-top: -5%" >
+
+  <div class="col-xl-6 col-lg-12 col-md-8 col-sm-12 col-12 mb-5" style="height: 430px;">
+          <app-leftovers-sell
+            [categories]="categories"
+            (categoryId)="selectCategory($event)"
+            (productPurchase)="addProductOfPurchase($event)"
+            [loading]="loading"
+            [balances]="balances"></app-leftovers-sell>
+  </div>
+
+  <div class="col-xl-6 col-lg-12 col-md-8 col-sm-12 col-12 mb-5"
+       style="height: 430px;">
+    <div class="card shadow-sm h-100">
+      <h6 class="card-header  bg-warning" style="color: brown; height: 35px">Список закупленого</h6>
+      <div class="card-body" style="overflow:auto;">
+        <div class="table-responsive" style="margin-top: -1.5%">
+          <app-purchase-list-products (allAmountPrice)="getTotalPrice($event)" [totalPrice]="totalPrice" [sales]="sales" [balances]="balances"  (delProduct)="removeProduct($event)" [productsPurchase]="productsPurchase"></app-purchase-list-products>
+
+        </div>
+
+
+      </div>
+      <hr>
+      <h4 style="float: right; text-align: center; color: #0d24ff"> Сумма: {{totalPrice.toFixed(1)}} грн.</h4>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row" style="margin-top: -3.5%">
+  <button  (click)="createPurchase()" type="button" class="btn btn-primary btn-lg btn-block">Создать</button>
+  <button (click)="getLastPurchase()" type="button" class="btn btn-warning btn-lg btn-block">Загрузить последнюю закупку</button>
+</div>
+
+
+
+<!--<div class="row" *ngIf="!loading">-->
+
+<!--  <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 mb-4">-->
+<!--    <app-sale-form-list-->
+<!--      (checkClient)="changeClient($event)"-->
+<!--      (allAmountPrice)="rePrice($event)"-->
+<!--      (delProduct)="deleteProduct($event)"-->
+<!--      [totalPrice]="totalPrice"-->
+<!--      [productsSale]="productsSale"-->
+<!--      [clients]="clients"-->
+<!--      [allDiscountAmount]="allDiscountAmount"-->
+<!--      [allRegularAmount]="allRegularAmount"-->
+
+<!--      (cancellationSale)="changeCancellation($event)" >-->
+
+
+<!--    </app-sale-form-list>-->
+<!--  </div>-->
+
+<!--  <div class="col-xl-5 col-lg-7 col-md-12 col-sm-12 col-12 mb-4">-->
+<!--    <app-sale-balance-list-->
+<!--      (productCart)="addProductToCart($event)"-->
+<!--      [categories]="categories"-->
+<!--      [balancesForWarehouse]="balancesForWarehouse">-->
+
+<!--    </app-sale-balance-list>-->
+<!--  </div>-->
+
+<!--  -->
+<!--</div>-->
+
+
+

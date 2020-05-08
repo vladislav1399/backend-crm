@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xl-12 col-lg-6 col-md-6 col-sm-12 col-12 mb-4" >
+    <div id="custom-search" class="top-search-bar">
+      <input [(ngModel)]="searchCategory"  style="background-color: white" class="form-control" type="text" placeholder="Поиск по категориям">
+    </div>
+  </div>
+</div>
+<ul>
+  <li>
+    <a (click)="getProductByCategory($event)" id="Все товары">Все товары</a>
+  </li>
+  <li *ngFor="let category of categories | categoryFilter: searchCategory: 'name'">
+    <a (click)="getProductByCategory($event)" id="{{ category._id }}">
+      {{ category.name }}
+    </a>
+    </ul>
+
+
+

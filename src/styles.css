@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/ngx-toastr/toastr.css';
+/*@import "assets/css/theme.min.css";*/
+button{
+  font-family: sans-serif;
+}
+
+
+li:hover{
+  cursor: pointer;
+}
+
+.btn-add-new-my{
+  float: right;
+}
+
+a {
+  font-size: 14px;
+  font-family: sans-serif, Verdana;
+}
+
+td:hover{
+  cursor: pointer;
+  color: black;
+}
+
+.hover-class:hover{
+  cursor: pointer;
+  color: red;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+tr:hover {
+  background-color: wheat;
+  cursor: pointer;
+  border-bottom: 2px solid darkslategrey;
+}
+
+.select-my{
+  height: 40px;
+  margin-left: 1%;
+  font-size: 16px;
+}
+
+select{
+  padding: 5px;
+}
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control, .input-group>.form-control-plaintext {
+  background-color: white;
+  color: brown;
+  height: 40px;
+}
+
+.my-vidjet{
+  height: 92px;
+}
+
+.inp-count{
+  height: 18px;
+  text-align: center;
+  width: 70px;
+}
+
+/*h4{*/
+/*  font-size: 10px;*/
+/*}*/
+
+/*h2{*/
+/*  font-size: 14px;*/
+/*}*/
+
+button:hover {
+  cursor: pointer;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+
+.ngx-pagination{
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+

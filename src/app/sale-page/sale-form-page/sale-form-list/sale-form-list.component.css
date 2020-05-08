@@ -1,0 +1,15 @@
+tr, td, th {
+  padding: 2px;
+}
+.toast-container{
+  font-size: 20px;
+}
+
+th {
+  background-color: khaki;
+}
+
+.nameProd {
+  text-overflow: ellipsis; /* Добавляем многоточие */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+}

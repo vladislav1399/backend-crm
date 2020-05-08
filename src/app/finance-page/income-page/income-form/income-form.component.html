@@ -1,0 +1,85 @@
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <h4 class="modal-title" style="color: white" id="exampleModalScrollableTitle">Добавить новый приход</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form
+          [formGroup]="formIncome">
+
+          <div class="form-group">
+            <label for="state">Выберите статью прихода</label>
+            <select
+              id="state"
+              class="custom-select"
+              formControlName="stateIncome"
+            >
+              <option selected disabled>Выберите статью прихода</option>
+              <option
+                *ngFor="let state of stateIncome"
+                value="{{state._id}}">
+                {{state.name}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="calc">Нал/Безнал</label>
+            <select
+              id="calc"
+              class="custom-select"
+              formControlName="cancellation"
+
+            >
+              <option disabled selected>В кассу или безналично</option>
+              <option value="Наличными">Наличными</option>
+              <option value="Безналично">Безналично</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="sum">Сумма </label>
+            <input
+              id="sum"
+              type="number"
+              min="1"
+              [defaultValue]="1"
+              class="form-control"
+              formControlName="value"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="description">Описание</label>
+            <input
+              id="description"
+              type="text"
+              class="form-control"
+              placeholder="Введите описание прихода"
+              formControlName="description">
+          </div>
+
+        </form>
+
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button
+          [disabled]="formIncome.invalid || formIncome.disabled"
+          type="button"
+          class="btn btn-primary"
+          (click)="addNewIncome()">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>

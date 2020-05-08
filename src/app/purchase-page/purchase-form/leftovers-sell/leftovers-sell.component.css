@@ -1,0 +1,8 @@
+td, tr, th {
+  padding: 2px;
+}
+
+tr, td, th {
+  padding: 1px;
+  font-size: 14px;
+}

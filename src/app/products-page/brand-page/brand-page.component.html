@@ -1,0 +1,52 @@
+
+<app-product-nav></app-product-nav>
+
+<app-brand-form [brands]="brands" (addNewBrand)="addNewBrand($event)"></app-brand-form>
+
+<div class="page-header">
+  <h2>Торговые марки представленые у компании!</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/products">Товары</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/category">Категории</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Торговые марки</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Small table -->
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="docs-example">
+      <div class="tab-content" id="pills-tabContent-small-table">
+        <div class="tab-pane tab-example-design fade show active"
+             id="pills-small-table-design" role="tabpanel" aria-labelledby="pills-small-table-design-tab">
+          <h1 style="text-align: center; color: #0b7fc5" *ngIf="brands.length === 0">Еще не добавлено не одного бренда...</h1>
+          <table *ngIf="brands.length > 0" class="table table-sm">
+            <thead>
+            <tr>
+              <th scope="col">Наименование</th>
+              <th>X</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr  style="color: purple; background-color: whitesmoke" *ngFor="let brand of brands; let i = index">
+              <td>
+                <span style="font-size: 17px">{{i + 1}}
+                </span>
+                <span style="margin-left: 30px; font-family: sans-serif; letter-spacing: 1px">{{brand.name}}
+                </span>
+              </td>
+              <td (click)="removeBrand(brand)" class="hover-class">X</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

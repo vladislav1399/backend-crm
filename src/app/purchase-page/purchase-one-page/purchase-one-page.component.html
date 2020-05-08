@@ -1,0 +1,127 @@
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="page-header">
+      <h2 class="mb-2">Изменить закупку</h2>
+      <div class="page-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/purchase" class="breadcrumb-link">Закупки</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Изменение закупки</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading">
+
+<div class="row">
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="cancellationForm" >
+    <div class="card border-top-primary shadow-sm h-100" >
+      <div class="card-body" >
+        <h5 class="text-muted mb-4">Форма оплаты</h5>
+        <div class="d-flex justify-content-between" >
+          <div class="metric-value" >
+            <select formControlName="cancellation">
+              <option value="Наличными">Наличными</option>
+              <option value="Безналично">Безналично</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="supplierForm">
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">Поставщик</h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <select formControlName="supplier" name="" id="">
+              <option selected value="{{purchase.supplier._id}}">{{purchase.supplier.name}} {{purchase.supplier.surname}}</option>
+              <option *ngFor="let supplier of suppliers" value="{{supplier._id}}">{{supplier.name}} {{supplier.surname}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="statusForm">
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">Статус </h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <select  formControlName="status"  name="">
+              <option selected value="Запланирован">Запланирован</option>
+              <option value="Создан">Создан</option>
+              <option value="Оплачен">Оплачен</option>
+              <option value="Отправлен">Отправлен</option>
+              <option value="Доставлен">Доставлен</option>
+              <option value="Принят">Принят</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="trackForm" >
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">ТТН</h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <h3 class="font-weight-bold"><input formControlName="track" type="text"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+
+
+  <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+  <app-purchase-one-list (addProductOfPurchase)="addProduct($event)" (allAmountCost)="reTotalPrice($event)" (product)="removeProduct($event)"  [productsPurchase]="purchase.productPurchase">
+  </app-purchase-one-list>
+
+  </div>
+
+
+  <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+
+    <div class="card shadow-sm h-100">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+
+
+
+          <div style="margin-top: 10%">
+          <a (click)="updatePurchase()" type="button" class="btn btn-primary btn-lg btn-block" style="color: yellow">Сохранить</a>
+          <a (click)="removePurchase()" type="button" class="btn btn-danger btn-lg btn-block" style="color: whitesmoke">Удалить</a>
+          </div>
+          <hr style="background-color: blue">
+          <h5 style="text-align: center; margin-top: 3%; font-size: 16px; font-weight: 700; letter-spacing: 2px">Сумма: {{purchase.allAmount.toFixed(1)}} грн.</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+
+
+

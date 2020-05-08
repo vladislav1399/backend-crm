@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h2 class="pageheader-title">Склады</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <div class="row btn-add-new-my">
+      <div class="btn-group " role="group" >
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-2">
+            Добавить новый склад
+          </button>
+        </div>
+      </div>
+    </div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" ><a routerLink="/setting">Настройки</a></li>
+        <li class="breadcrumb-item active" >Склады</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="list-group" *ngIf="!loading">
+  <button *ngFor="let warehouse of warehouses" type="button" class="list-group-item list-group-item-action">{{warehouse.name}}</button>
+</div>
+
+
+<app-warehouse-form (addNewWarehouse)="addNewWarehouses($event)"></app-warehouse-form>

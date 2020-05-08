@@ -1,0 +1,71 @@
+<div class="row" >
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="cancellationForm"  >
+    <div class="card border-top-primary shadow-sm h-100" >
+      <div class="card-body" >
+        <h5 class="text-muted mb-4">Форма оплаты</h5>
+        <div class="d-flex justify-content-between"  >
+          <div class="metric-value" >
+            <select formControlName="cancellation" (change)="changeCancellation($event)" >
+              <option disabled selected value="{{cancellationNow}}">{{cancellationNow}}</option>
+              <option value="Наличными">Наличными</option>
+              <option value="Безналично">Безналично</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="clientForm" >
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">Покупатель</h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <select formControlName="client" (change)="changeClient($event)"  name="" id="">
+<!--              @ts-ignore-->
+              <option  selected value="{{client._id}}">{{client.name}} {{client.surname}}</option>
+              <option *ngFor="let client of clients" value="{{client._id}}">{{client.name}} {{client.surname}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" [formGroup]="statusForm" >
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">Статус </h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <select formControlName="status" (change)="changeStatus($event)"   name="">
+              <option  selected value="{{sale.status}}">{{sale.status}}</option>
+              <option value="Запланирован">Запланирован</option>
+              <option value="Создан">Создан</option>
+              <option value="Оплачен">Оплачен</option>
+              <option value="Отправлен">Отправлен</option>
+              <option value="Доставлен">Доставлен</option>
+              <option value="Принят">Принят</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4" >
+    <div class="card border-top-primary shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="text-muted mb-4">ТТН</h5>
+        <div class="d-flex justify-content-between">
+          <div class="metric-value">
+            <h3 class="font-weight-bold"><input (keypress)="tracking($event)" [(ngModel)]="trackNumber" type="text"></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

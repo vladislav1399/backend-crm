@@ -1,0 +1,7 @@
+td, th {
+  padding: 3px;
+}
+
+ul > li > span {
+  padding: 1px;
+}

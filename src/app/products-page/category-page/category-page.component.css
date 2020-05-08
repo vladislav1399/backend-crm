@@ -1,0 +1,13 @@
+.list-group > a{
+  padding: 6px;
+}
+
+.list-group > a{
+background-color: lightskyblue;
+}
+
+.list-group > a:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+

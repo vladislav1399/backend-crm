@@ -1,0 +1,57 @@
+<div class="row" style="margin-top: -1%">
+
+
+<div  class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4 my-vidjet">
+  <div class="card border-top-primary shadow-sm h-100">
+    <div class="card-body">
+      <h5 class="text-muted mb-4 my-h5">Форма оплаты</h5>
+      <div class="d-flex justify-content-between">
+        <div class="metric-value  my-mtric">
+          <select (change)="changeCancellation($event)">
+            <option disabled selected>Выберите форму оплаты</option>
+            <option value="Наличными">Наличными</option>
+            <option value="Безналично">Безналично</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 mb-4 my-vidjet">
+  <div class="card border-top-primary shadow-sm h-100">
+    <div class="card-body">
+      <h5 class="text-muted mb-4 my-h5">Выберите поставщика</h5>
+      <div class="d-flex justify-content-between">
+        <div class="metric-value  my-mtric">
+          <select (change)="changeSupplier($event)">
+            <option disabled selected value="">Выберите поставщика</option>
+            <option *ngFor="let supplier of suppliers" value="{{supplier._id}}">{{supplier.name}} {{supplier.surname}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12 mb-4 my-vidjet">
+  <div class="card border-top-primary shadow-sm h-100">
+    <div class="card-body">
+      <h5 class="text-muted mb-4 my-h5">Статус заказа</h5>
+      <div class="d-flex justify-content-between">
+        <div class="metric-value  my-mtric">
+          <select (change)="changeStatus($event)" style="margin-top: -2%">
+            <option selected value="Запланирован">Запланирован</option>
+            <option value="Создан">Создан</option>
+            <option value="Оплачен">Оплачен</option>
+            <option value="Отправлен">Отправлен</option>
+            <option value="Доставлен">Доставлен</option>
+            <option value="Принят">Принят</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

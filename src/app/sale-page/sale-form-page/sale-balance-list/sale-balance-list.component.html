@@ -1,0 +1,41 @@
+
+<div class="card shadow-sm" style="height: 470px" >
+  <h5 class="card-header" style="background-color: #b3d7ff "> Товары в корзине</h5>
+<div class="card-body p-0" style="overflow: auto" >
+  <div class="table-responsive"  >
+    <table class="table no-wrap p-table">
+      <thead class="bg-light">
+      <tr class="border-0">
+        <th class="border-0">Имя</th>
+        <th class="border-0">Цена</th>
+        <th class="border-0">Остаток</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  (click)="addProductCart(balance)" *ngFor="let balance of balancesForWarehouse">
+        <td>{{balance.productId.name}}</td>
+        <td>{{balance.productId.salePrice.toFixed(1)}}</td>
+        <td style="color: #0a3c93">{{balance.leftovers.balance }}</td>
+      </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+<div class="card-footer">
+  <p  class="h1 font-weight-bold mb-0">
+          <span style="width: 50%" class="text-primary d-inline-block">
+
+            <input value="Все товары" (change)="filterCategory($event)"  style="font-size: 15px; width: 100%" [(ngModel)]="searchCategory" placeholder="Все товары" list="category" type="search">
+              <datalist style="font-size: 15px; width: 100%"  id="category">
+                <option checked selected value="Все товары" id="all" >Все товары</option>
+              <option *ngFor="let category of categories"
+                      style="font-size: 14px"
+                      value="{{category.name}}"
+                      id="{{category._id}}">
+                </datalist>
+          </span>
+</div>
+</div>

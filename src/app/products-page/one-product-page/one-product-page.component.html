@@ -1,0 +1,92 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading">
+<div class="page-header">
+  <h2 style="text-align: center" class="pageheader-title"><span style="color: blueviolet">{{product.name}}</span></h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/category">Категории</a></li>
+        <li class="breadcrumb-item" aria-current="page"><a routerLink="/products">Товары</a></li>
+        <li class="breadcrumb-item active font-weight-bold" aria-current="page">{{product.name}}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-xl-5 col-lg-6 col-md-12 col-sm-12 col-12 mb-4">
+      <div class="card shadow-sm h-100">
+        <h3 style="text-align: center; background-color: beige" class="card-header" >Цена</h3>
+
+
+        <form class="card-body p-0" [formGroup]="productForm">
+          <ul class="social-sales list-group list-group-flush">
+            <li class="list-group-item d-flex align-items-center">
+              <span class="icon-shape icon-lg rounded-circle text-white bg-twitter mr-2"></span>
+              <h3 class="span-product my-span">Розница:</h3>
+              <input formControlName="salePrice" type="number" class="ml-auto text-dark">
+            </li>
+
+            <li class="list-group-item d-flex align-items-center">
+              <span class="icon-shape icon-lg rounded-circle text-white bg-instagram mr-2"></span>
+              <h3 class="">Цена закупки:</h3>
+              <input  formControlName="purchasePrice" type="number" class="ml-auto text-dark my-input">
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+    <div class="col-xl-5 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+
+      <div class="card shadow-sm h-100">
+
+        <h3 class="card-header" style="text-align: center; background-color: beige">Информация</h3>
+
+        <div [formGroup]="characterForm" class="card-body p-0">
+
+          <div class="card-body p-0">
+
+            <ul class="social-sales list-group list-group-flush">
+
+              <li class="list-group-item d-flex align-items-center">
+
+              <span class="icon-shape icon-lg rounded-circle text-white bg-twitter mr-2">
+
+              </span>
+                <h4 class="span-product" class="">Имя:</h4>
+                <input formControlName="name"  class="ml-auto text-dark">
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+              <span class="icon-shape icon-lg rounded-circle text-white bg-instagram mr-2">
+              </span><h4 class="">Категория:</h4>
+                <select formControlName="category" (change)="changeCategory($event)" class="ml-auto text-dark">
+                  <option disabled checked selected value="{{product.category}}">{{product.categoryName}}</option>
+                  <option *ngFor="let category of categories" value="{{category._id}}">{{category.name}}</option>
+                </select>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+              <span class="icon-shape icon-lg rounded-circle text-white bg-instagram mr-2">
+              </span><h4 class="">Бренд:</h4>
+                <select formControlName="brand"  (change)="changeBrand($event)" class="ml-auto text-dark">
+                  <option disabled checked selected value="">{{product.brand.name}}</option>
+                  <option *ngFor="let brand of brands" value="{{brand._id}}">{{brand.name}}</option>
+                </select>
+              </li>
+              <li class="list-group-item d-flex align-items-center">
+              <span class="icon-shape icon-lg rounded-circle text-white bg-instagram mr-2">
+              </span><h4 class="">Штрих - код:</h4>
+                <input disabled formControlName="barCode" type="number" class="ml-auto text-dark">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer text-center">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="saveUpdatedProduct()"  class="btn btn-success btn-lg btn-block">Сохранить изменения</button>
+<button  (click)="removeProduct()"  class="btn btn-warning btn-lg btn-block">Удалить товар</button>

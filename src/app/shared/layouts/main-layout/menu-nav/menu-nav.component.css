@@ -1,0 +1,15 @@
+li > a {
+  color: white;
+}
+
+li > a > i{
+  font-size: 21px;
+   color: blue;
+}
+
+ .nav-left-sidebar .navbar-nav .nav-link{
+   font-size: 15px;
+   color: black;
+ }
+
+

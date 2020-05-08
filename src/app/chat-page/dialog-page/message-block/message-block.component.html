@@ -1,0 +1,42 @@
+
+
+
+
+
+  <div *ngFor="let message of messages" class="media chat-item align-items-center">
+    <img style="width: 10px; height: 20px" src="{{message.userPost.photoUser}}" class="rounded-circle avatar-lg">
+    <div class="media-body">
+      <div class="chat-item-title">
+        <span class="chat-item-author SPAN-filter-by-text" data-filter-by="text">{{message.userPost.name}} {{message.userPost.surname}}</span>
+        <span data-filter-by="text" class="SPAN-filter-by-text"> Дата: {{message.date | date: 'dd-MM-yyyy'}}<br> Время: {{message.date | date: 'HH:mm'}} </span>
+      </div>
+      <div class="chat-item-body DIV-filter-by-text" data-filter-by="text">
+        <p>{{message.message}}
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="chat-module-top">
+    <div class="chat-module-body chat-list">
+      <div *ngFor="let message of messages" class="media chat-item align-items-center">
+        <img alt="Claire" src="../assets/images/avatar-1.jpg" class="rounded-circle avatar-lg">
+        <div class="media-body">
+          <div class="chat-item-title">
+            <span class="chat-item-author SPAN-filter-by-text" data-filter-by="text">{{message.userPost.name}} {{message.userPost.surname}}</span>
+            <span data-filter-by="text" class="SPAN-filter-by-text">4 days ago</span>
+          </div>
+          <div class="chat-item-body DIV-filter-by-text" data-filter-by="text">
+            <p>Hey guys, just kicking things off here in the chat window. Hope you're all ready to tackle this great project. Let's smash some Brand Concept &amp; Design!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+

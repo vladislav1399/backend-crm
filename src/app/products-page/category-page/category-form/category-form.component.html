@@ -1,0 +1,45 @@
+
+<div style="" class="modal fade" id="exampleModal-2"
+     tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 700px">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: greenyellow">
+        <h5 class="modal-title" id="exampleModalLabel">Добавление категории</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form [formGroup]="categoryForm" >
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Имя категории</span>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                formControlName="name"
+                placeholder="">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="form-group">
+       <ul>
+         <li (click)="changeParentCategory(category)" *ngFor="let category of categories">
+           {{category.name}}
+         </li>
+       </ul>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button [disabled]="categoryForm.invalid || categoryForm.disabled" (click)="addCategory()" type="button" class="btn btn-primary">Добавить</button>
+      </div>
+    </div>
+  </div>
+</div>

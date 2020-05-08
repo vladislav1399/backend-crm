@@ -1,0 +1,17 @@
+.modal-dialog{
+  max-width: 900px;
+}
+
+
+td, th, tr {
+  padding: 2px;
+}
+
+.my-th{
+  color: green;
+}
+
+.my-th:hover {
+  cursor: pointer;
+  color: lightskyblue;
+}

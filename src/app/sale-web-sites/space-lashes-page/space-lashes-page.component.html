@@ -1,0 +1,126 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div  style="margin-top: -3.2%" class="container-fluid   dashboard-content" *ngIf="!loading">
+  <div style="margin-top: -1.7%" class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="page-header">
+        <h3 class="pageheader-title ">Интернет магазин Space lashes</h3>
+        <div class="page-breadcrumb">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/" class="breadcrumb-link">Главная</a></li>
+              <li class="breadcrumb-item"><a routerLink="/sites" class="breadcrumb-link">Статистика</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Space lashes</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div style="margin-top: -2%" class="row" >
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <div class="card shadow-sm h-50">
+        <div class="card-body">
+          <h5 class="text-muted text-center">Продаж на сумму</h5>
+          <div class="metric-value d-inline-block">
+            <h3 class="mb-1">180000 грн.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <div class="card shadow-sm h-50">
+        <div class="card-body">
+          <h5 class="text-muted text-center">Facebook Ads</h5>
+          <div class="metric-value d-inline-block">
+            <h3 class="mb-1"> 20000 грн.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <div class="card shadow-sm h-50">
+        <div class="card-body">
+          <h5 class="text-muted text-center">Смс рассылка</h5>
+          <div class="metric-value d-inline-block">
+            <h3 class="mb-1">4500 грн.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <div class="card mb-5 shadow-sm">
+        <h5 class="text-muted" style="text-align: center">Выберите дату</h5>
+        <input    id="dateOt" [(ngModel)]="dateOt"  value="{{dateOt}}"  class="form-control" type="date" >
+        <input  [(ngModel)]="dateDo" class="form-control" type="date" >
+
+        <button class="align-content-center" (click)="changeDate()">Применить дату</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="margin-top: -7%" class="row">
+    <form class="col-xl-8">
+      <div class="input-group input-group-round">
+        <input type="search" class="form-control filter-list-input" placeholder="Поиск по заказам (Имя, Фамилия, Телефон, Город)">
+      </div>
+    </form>
+  </div>
+
+  <div  class="row" style="margin-top: 2%"  >
+
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <a class="btn btn-success text-white">Обработка <span>(1000)</span></a>
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <a  class="btn btn-warning text-white">Оплата <span>(1000)</span></a>
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <a  class="btn btn-secondary text-white">Сборка <span>(1000)</span></a>
+
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <a class="btn btn-danger text-white">Отмена <span>(1000)</span></a>
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+      <a class="btn btn-dark text-white">Выполнен <span>(1000)</span></a>
+    </div>
+
+    <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+
+      <a   class="btn" style="background-color: darkgrey; color: white">Все <span>(1000)</span></a>
+
+    </div>
+
+
+  </div>
+
+
+  <div style="margin-top: 1%"  class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+      <div class="card shadow-sm h-100">
+        <h3 class="card-header bg-primary"> Заказы </h3>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <app-order-space-list [spaceOrders]="spaceOrders"></app-order-space-list>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

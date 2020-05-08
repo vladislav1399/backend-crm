@@ -1,0 +1,45 @@
+tr, td {
+  padding: 1px;
+}
+
+thead > tr {
+  background-color: silver;
+  color: black;
+  font: bold  110% Verdana;
+  font-size: 14px;
+}
+
+
+select {
+  width: 100%;
+  padding: 0;
+}
+
+select > option {
+  width: 90%;
+}
+
+.my-class{
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: sans-serif,
+  Verdana; color: crimson;
+}
+
+
+
+
+/*changeCategory(event) {*/
+/*if (event.target.value === 'all' ) {*/
+/*  this.balances = this.balancesRef;*/
+/*} else {*/
+/*    this.balances = this.balancesRef;*/
+/*if (this.warehouseChange === 'Все товары') {*/
+/*  this.balances = this.balancesRef*/
+/*} else {*/
+/*    this.balances = this.balances.filter(balance => balance.productId.category === event.target.value);*/
+/*  }*/
+/*console.log(this.balances);*/
+/*}*/
+/*}*/

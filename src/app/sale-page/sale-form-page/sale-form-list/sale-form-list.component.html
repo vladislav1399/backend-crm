@@ -1,0 +1,89 @@
+
+<div class="card shadow-sm" style="height: 470px"  >
+  <h5 class="card-header" style="background-color: #b3d7ff "> Товары в корзине</h5>
+<div class="card-body p-0" style="overflow: auto">
+  <div class="table-responsive" >
+    <table class="table">
+      <thead class="bg-light">
+      <tr class="border-0">
+        <th>X</th>
+        <th class="border-0">Имя</th>
+        <th>Цена</th>
+        <th class="border-0">Кол.</th>
+        <th>Скидка %</th>
+<!--        <th>Сумма скидки</th>-->
+        <th>Сумма</th>
+
+<!--        <th class="border-0">Сумма</th>-->
+<!--        <th class="border-0">Скидка</th>-->
+<!--        <th class="border-0">X</th>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let productCart of productsSale">
+        <td (click)="removeProduct(productCart)">X</td>
+        <td class="nameProd">{{productCart.name}} </td>
+
+
+
+
+
+        <td>
+          <input  (change)="changeSalePrice(productCart, $event)"
+                  class="inp-count"
+
+                  value="{{ (productCart.priceSale).toFixed(1)}}"
+                  type="number">
+        </td>
+
+
+        <td>
+          <input (change)="changeCount(productCart, $event)"
+                 style="width: 35px; height: 20px; text-align: center"
+                 value="{{productCart.count}}"
+                 type="number">
+        </td>
+
+        <td>
+          <input  (change)="changeDiscount(productCart, $event)"
+                  style="width: 35px; height: 20px; text-align: center"
+                  value="{{productCart.discount}}"
+                  type="number">
+        </td>
+<!--        <td>{{ (productCart.amount / 100 * productCart.discount).toFixed(2)}}</td>-->
+        <td>{{productCart.amount.toFixed(2)}}</td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<div class="card-footer" style="height: 95px">
+  <p  class="h1 font-weight-bold mb-0" style="height: 35px">
+          <span style="width: 50%" class="text-primary d-inline-block">
+
+            <input (change)="changeClient($event)" style="font-size: 15px; width: 100%" [(ngModel)]="searchClientSurname" placeholder="Выберите покупателя" list="client" type="search">
+              <datalist   style="font-size: 15px; width: 100%"  id="client">
+              <option *ngFor="let client of clients | clientSurname: searchClientSurname: 'surname'"
+                      value="{{client.surname}} {{client.name}} {{client.phone}}"
+                      style="font-size: 14px"
+                      id="{{client._id}}">
+
+
+                </datalist>
+
+                         <select (change)="changeCancellation($event)"  style="font-size: 15px; width: 100%" id="">
+                           <option selected value="Наличными">Наличными</option>
+                            <option value="Безналично">Безналично</option>
+                         </select>
+          </span>
+    <span  style="font-size: 15px; margin-top: -1.5%" class="text-primary float-right">Сумма: {{allRegularAmount.toFixed(1)}} грн.</span><br>
+    <span style="font-size: 15px; margin-top: -9.5%"  class="text-danger float-right">Скидка: {{allDiscountAmount.toFixed(1)}} грн.</span><br>
+    <span style="font-size: 15px; margin-top: -11.5%"  class="text-warning float-right">К оплате: {{totalPrice.toFixed(1)}} грн.</span>
+  </p>
+</div>
+</div>

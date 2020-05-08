@@ -1,0 +1,21 @@
+.dashboard-header .navbar .navbar-right-top .nav-item .nav-link {
+  font-size: 15px;
+}
+
+.dashboard-header .navbar .navbar-right-top .nav-item .nav-link:hover{
+  cursor: pointer;
+}
+select{
+  height: 33px;
+  font-size: 16px;
+  background-color: purple;
+  color: white;
+  margin-top: -1%;
+  line-height: 10px;
+}
+.dashboard-header .navbar .navbar-right-top {
+  height: 40px;
+}
+.dashboard-header .navbar .navbar-right-top .nav-item .nav-link{
+  margin-top: -6%;
+}

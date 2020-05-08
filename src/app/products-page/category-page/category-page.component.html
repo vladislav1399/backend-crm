@@ -1,0 +1,59 @@
+<app-product-nav>
+</app-product-nav>
+
+<div class="page-header">
+  <h2 class="pageheader-title">Категории </h2>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active " aria-current="page"><a routerLink="/">Главная</a></li>
+        <li class="breadcrumb-item active " aria-current="page"><a routerLink="/products">Товары</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Категории</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="categories.length === 0">
+  <h1 style="text-align: center">Еще не добавлено не одной категории!</h1>
+</div>
+
+<app-category-form
+  (addNewCategory)="addNewCategory($event)"
+  [categories]="categories">
+</app-category-form>
+
+
+<div *ngIf="categories.length > 0">
+
+  <div class="container">
+    <input placeholder="Поиск по категориям..." style="background-color: #b3d7ff; font-family: sans-serif, Verdana" class="form-control" id="myInput" type="text" >
+    <br>
+    <div class="list-group" *ngIf="!loading">
+      <p
+        style="color: darkblue;
+        font-family: sans-serif, Verdana;
+        font-weight: 600;
+        letter-spacing: 1px"
+        *ngFor="let category of categories;
+
+        let i = index;"
+
+        class="list-group-item">
+        <span>
+          {{i + 1}}.
+        </span>
+        <a  [routerLink]="[category._id]">{{category.name}}</a>
+        <span (click)="removeCategory(category)" class="hover-class" style="float: right; margin-right: 30px">X</span>
+      </p>
+
+
+    </div>
+  </div>
+</div>
+
+
+

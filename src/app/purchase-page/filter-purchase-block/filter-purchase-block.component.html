@@ -1,0 +1,68 @@
+<div class="row" style="margin-top: -2%">
+<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+  <div class="card mb-5 shadow-sm">
+    <div class="card-body">
+      <div class="d-inline-block">
+        <h5 class="text-muted">За период</h5>
+        <select (change)="changeFilter($event)">
+          <option selected value="">Выберите период</option>
+          <option value="За сегодня">За сегодня</option>
+          <option value="За вчера">За вчера</option>
+          <option value="За Неделю">За неделю</option>
+          <option value="За последний месяц">За последний месяц</option>
+          <option value="За последний год">За последний год</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12">
+  <div class="card mb-5 shadow-sm">
+    <div class="card-body">
+      <div class="d-inline-block">
+        <h5 class="text-muted">Статус</h5>
+        <select (change)="changeStatusPurchase($event)">
+          <option selected value="Запланирован">Выберите статус</option>
+          <option value="Запланирован">Запланирован</option>
+          <option value="Создан">Создан</option>
+          <option value="Оплачен">Оплачен</option>
+          <option value="Отправлен">Отправлен</option>
+          <option value="Доставлен">Доставлен</option>
+          <option value="Принят">Принят</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+  <div class="card mb-5 shadow-sm">
+    <div class="card-body">
+      <div class="d-inline-block">
+        <h5 class="text-muted">По поставщику</h5>
+        <select  (change)="selectFilterSupplier($event)">
+          <option selected value="">Выберите поставщика</option>
+          <option *ngFor="let supplier of suppliers" value="{{supplier._id}}" >{{supplier.name}} {{supplier.surname}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+  <div class="card mb-5 shadow-sm">
+    <div class="input-group input-search col-xl-11" style="margin-top: 2%">
+      <input style="height: 20px"    id="dateOt" [(ngModel)]="dateOt"  value="{{dateOt}}"  class="form-control" type="date" >
+    </div>
+
+    <div class="input-group input-search col-xl-11" style="margin-top: 2%">
+      <input style="height: 20px" [(ngModel)]="dateDo" class="form-control" type="date" >
+    </div>
+
+    <div class="input-group input-search col-xl-11" style="margin-top: 3%">
+      <button (click)="changeDate()">Применить дату</button>
+    </div>
+  </div>
+</div>
+</div>

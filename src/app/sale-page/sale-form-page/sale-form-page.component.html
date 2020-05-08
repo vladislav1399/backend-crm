@@ -1,0 +1,46 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="row" *ngIf="!loading">
+
+  <div class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12 mb-4">
+    <app-sale-form-list
+      (checkClient)="changeClient($event)"
+      (allAmountPrice)="rePrice($event)"
+      (delProduct)="deleteProduct($event)"
+      [totalPrice]="totalPrice"
+      [productsSale]="productsSale"
+      [clients]="clients"
+      [allDiscountAmount]="allDiscountAmount"
+      [allRegularAmount]="allRegularAmount"
+
+      (cancellationSale)="changeCancellation($event)" >
+
+
+    </app-sale-form-list>
+</div>
+
+  <div class="col-xl-5 col-lg-7 col-md-12 col-sm-12 col-12 mb-4">
+      <app-sale-balance-list
+        (productCart)="addProductToCart($event)"
+        [categories]="categories"
+        [balancesForWarehouse]="balancesForWarehouse">
+
+      </app-sale-balance-list>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+<div class="row">
+            <button (click)="createSale()" type="button" class="btn btn-primary btn-lg btn-block">Продать</button>
+            <button (click)="returnLastSale()" type="button" class="btn btn-warning btn-lg btn-block">Возобновить последнюю продажу</button>
+
+</div>
+
+
+

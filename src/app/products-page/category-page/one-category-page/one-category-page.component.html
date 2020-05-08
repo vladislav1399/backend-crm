@@ -1,0 +1,46 @@
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading">
+
+<div class="page-header">
+  <h3 class="pageheader-title">Редактирование категории - <span style="color: salmon"> {{category.name}} </span> </h3>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active " aria-current="page"><a routerLink="/products"> Товары </a></li>
+        <li class="breadcrumb-item active " aria-current="page"><a routerLink="/category">Категории</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Категория - {{category.name}} </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<hr>
+
+<div class="col-xl-9 col-lg-6 col-md-12 col-sm-12 col-12">
+  <div class="card mb-5 shadow-sm">
+    <h3 class="card-header" style="background-color: sandybrown;">Редактировать категорию</h3>
+    <div class="card-body">
+        <div class="form-group row">
+          <label for="inputEmail2" class="col-3 col-lg-2 col-form-label text-right">Имя категории: </label>
+          <div class="col-9 col-lg-10">
+            <input [(ngModel)]="categoryName" id="inputEmail2" type="text">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label  class="col-3 col-lg-2 col-form-label text-right">Родительская категория:</label>
+          <div class="col-9 col-lg-10">
+
+            <select (change)="changeCategory($event)">
+              <option disabled checked> Выберите родительскую категорию</option>
+              <option *ngFor="let cat of categories" value="{{cat._id}}">{{cat.name}}</option>
+              <option value=" ">Оставить данное поле без выбора</option>
+            </select>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+  <a style="color: black" (click)="updateCategory()" type="button" class="btn btn-primary btn-lg btn-block">Обновить категорию</a>
+<a style="color: black" (click)="removeCategory()" type="button" class="btn btn-warning btn-lg btn-block">Удалить категорию</a>
+</div>

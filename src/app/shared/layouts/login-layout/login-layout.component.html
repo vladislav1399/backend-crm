@@ -1,0 +1,73 @@
+<div *ngIf="FIRST_WAREHOUSE">
+  <h2>Создате первый склад для работы</h2>
+  <div class="form-login" [formGroup]="warehouseForm">
+    <label for="warName">Наименование склада:</label>
+    <input type="text" placeholder="Введите название первого склада" id="warName" formControlName="warName">
+    <button
+      (click)="createFirstWarehouse()"
+      type="submit"
+      [disabled]="warehouseForm.invalid || warehouseForm.disabled"
+      class="waves-effect waves-light btn"
+    >
+      Сохранить изменения
+    </button>
+  </div>
+</div>
+
+
+<div class="splash-container" *ngIf="!FIRST_START" >
+  <div class="card ">
+    <div class="card-header text-center"><a href="/login"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Авторизируйтесь в системе</span></div>
+    <div class="card-body">
+      <div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" id="username" type="text" placeholder="Телефон" autocomplete="off" [(ngModel)]="phoneUser">
+        </div>
+        <div class="form-group">
+          <input class="form-control form-control-lg" id="password" type="password" placeholder="Пароль" [(ngModel)]="passwordUser">
+        </div>
+        <div class="form-group">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="loginUser()">Войти в систему</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<form class="splash-container" *ngIf="FIRST_START" [formGroup]="regUser">
+  <div class="card-header text-center"><a href="/login"><img class="logo-img" src="../assets/images/logo.png" alt="logo"></a><span class="splash-description">Добавьте администратора</span></div>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="mb-1">Первый вход</h3>
+      <p class="mb-0">Создайте первого пользователя</p>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Имя" autocomplete="off" formControlName="nameReg">
+      </div>
+      <div class="form-group">
+        <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Фамилия" autocomplete="off" formControlName="surnameReg">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Телефон" autocomplete="off" formControlName="phoneReg">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control form-control-lg" id="pass1" type="password" required="" placeholder="Пароль" formControlName="passwordReg" >
+      </div>
+
+      <div class="form-group">
+        <input class="form-control form-control-lg"  type="password" required="" placeholder="Еще раз пароль" formControlName="passwordReg2">
+      </div>
+      <div class="form-group pt-2">
+        <button class="btn btn-block btn-primary"
+                (click)="registerFirstUser()"
+                [disabled]="regUser.invalid || regUser.disabled"
+        >Зарегестрировать</button>
+      </div>
+    </div>
+  </div>
+</form>

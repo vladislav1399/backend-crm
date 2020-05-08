@@ -1,0 +1,58 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading">
+
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="page-header">
+      <h2 class="mb-2">Покупатели</h2>
+      <div class="page-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/" class="breadcrumb-link">Главная</a></li>
+            <li class="breadcrumb-item"><a routerLink="/sale/clients" class="breadcrumb-link">Покупатели</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{client.name}} {{client.surname}}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <form [formGroup]="updateClientForm">
+    <div class="card-body">
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault01">Имя</label>
+        <input type="text" class="form-control" id="validationDefault01" formControlName="name" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="validationDefault02">Фамилия</label>
+        <input type="text" class="form-control" id="validationDefault02" formControlName="surname" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="validationDefault03">Телефон</label>
+        <input type="text" class="form-control" id="validationDefault03" formControlName="phone" required>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault04">Скидка %</label>
+        <input type="number" class="form-control" id="validationDefault04" formControlName="discount"   required>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationDefault05">Сумма покупок</label>
+        <input disabled type="number" class="form-control" id="validationDefault05" formControlName="amountPurchase"  required>
+      </div>
+    </div>
+    <button (click)="updateClient()" class="btn btn-primary" type="submit">Сохранить</button>
+    </div>
+  </form>
+
+
+
+
+</div>

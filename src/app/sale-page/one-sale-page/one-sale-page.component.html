@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="page-header">
+      <h2 class="mb-2">Изменить продажу</h2>
+      <div class="page-breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/sale" class="breadcrumb-link">Продажи</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Изменение продажи</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div *ngIf="!loading">
+
+  <app-info-block-sale
+    [cancellationNow]="cancellation"
+  [sale]="sale"
+  [clients]="clients"
+  (cancellation)="checkCancellation($event)"
+  (chackedClient)="checkClient($event)"
+  (status)="checkStatus($event)"
+  (track)="checkTrack($event)"
+  ></app-info-block-sale>
+
+  <app-table-products-sale
+    [productsSale]="productsSale"
+    [loading]="loading"
+    [allAmount]="sale.allAmount"
+    [allAmountWithoutDiscount]="allAmountWithoutDiscount"
+    [allDiscountAmount]="allDiscountAmount"
+    (productsSaleOutput)="updateSale($event)"
+    [saleHomeService]="saleHomeService"
+    [toastrService]="toastrService"
+    [saleId]="sale._id"
+    [saleService]="saleService"
+    [discount]="discount"
+    [addProductArr]="addProductSale"
+    [deleteProductSale]="deleteProductSale"
+    (productChange)="changeDiscount($event)"
+    (deleteProduct)="removeProduct($event)"
+    (addProductSale)="addProductUpdateArr($event)"
+  ></app-table-products-sale>
+
+</div>

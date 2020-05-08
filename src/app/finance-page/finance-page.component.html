@@ -1,0 +1,170 @@
+<div class="page-header">
+  <h2 class="pageheader-title">Финансы</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active " aria-current="page">Финансы</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="email-inbox-header" style="margin-top: -2.5%">
+  <div class="row">
+    <div class="col-lg-6">
+      <select class="select-my" (change)="changeFilter($event)">
+        <option value="За сегодня">За сегодня</option>
+        <option value="За вчера">За вчера</option>
+        <option value="За Неделю">За неделю</option>
+        <option value="За последний месяц">За последний месяц</option>
+        <option value="За последний год">За последний год</option>
+      </select>
+
+    </div>
+    <div class="col-lg-3" style="float: right">
+      <div class="email-search">
+        <div class="input-group input-search">
+          <h5>Дата от</h5>
+          <input id="dateOt"   [(ngModel)]="dateOt"  value="{{dateOt}}"  class="form-control" type="date" >
+        </div>
+        <div class="email-search">
+          <div class="input-group input-search">
+            <h5>Дата до</h5>
+            <input   [(ngModel)]="dateDo"   class="form-control" type="date" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button style="margin-top: 2%;" (click)="changeDate()" type="button" class="btn btn-secondary">Применить фильтр</button>
+    </div>
+  </div>
+
+  <hr>
+
+<app-loader *ngIf="loading"></app-loader>
+
+
+
+
+
+
+
+<div *ngIf="!loading" style="margin-top: 2%" class="row">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm h-100">
+      <h5 class="card-header">Общий приход</h5>
+      <div class="card-body">
+        <div class="metric-value d-inline-block">
+          <h1 class="mb-1">+{{incomeTotal}} грн.</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+          <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">25%</span>
+        </div>
+      </div>
+      <div class="card-body bg-light p-t-40 p-b-40">
+        <div id="sparkline-revenue"></div>
+      </div>
+      <div class="card-footer text-center bg-white">
+        <a href="#" class="card-link">View Details</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm h-100">
+      <h5 class="card-header">Наличка</h5>
+      <div class="card-body">
+        <div class="metric-value d-inline-block">
+          <h1 class="mb-1">+{{cashIncome}} грн.</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+          <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">25%</span>
+        </div>
+      </div>
+      <div class="card-body bg-light p-t-40 p-b-40">
+        <div id="sparkline-revenue3"></div>
+      </div>
+      <div class="card-footer text-center bg-white">
+        <a href="#" class="card-link">View Details</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm h-100">
+      <h5 class="card-header">Безнал</h5>
+      <div class="card-body">
+        <div class="metric-value d-inline-block">
+          <h1 class="mb-1">+{{cashlessIncome}} грн.</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+          <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span> <span class="ml-1">25%</span>
+        </div>
+      </div>
+      <div class="card-body bg-light p-b-40 p-t-40">
+        <div id="sparkline-revenue4"></div>
+      </div>
+      <div class="card-footer text-center bg-white">
+        <a href="#" class="card-link">View Details</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm h-100">
+      <h5 class="card-header">Общий расход</h5>
+      <div class="card-body">
+        <div class="metric-value d-inline-block">
+          <h1 class="mb-1">-{{expensesTotal}} грн.</h1>
+        </div>
+        <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
+          <span class="icon-circle-small icon-box-xs text-danger bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">15%</span>
+        </div>
+      </div>
+      <div class="card-body text-center bg-light p-t-40 p-b-40">
+        <div id="sparkline-revenue2"></div>
+      </div>
+      <div class="card-footer text-center bg-white">
+        <a href="#" class="card-link">View Details</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12 col-12 mb-4">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/cash" tabindex="-1" aria-disabled="true">Касса</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/cashless" tabindex="-1" aria-disabled="true">Безнал</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/income" tabindex="-1" aria-disabled="true">Приход</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/expenses" tabindex="-1" aria-disabled="true">Расход</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/state" tabindex="-1" aria-disabled="true">Статьи</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/finance/cash-store" tabindex="-1" aria-disabled="true">Проплаты</a>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+</div>
+</div>

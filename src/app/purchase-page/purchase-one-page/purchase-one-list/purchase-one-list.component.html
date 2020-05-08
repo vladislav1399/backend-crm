@@ -1,0 +1,61 @@
+
+  <div class="card shadow-sm h-100">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-light">
+          <tr class="border-0">
+            <th class="border-0">Имя </th>
+            <th class="border-0">Количество</th>
+            <th class="border-0">Цена</th>
+            <th class="border-0">Сумма</th>
+            <th class="border-0">X</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let product of productsPurchase">
+            <td>{{product.name}}</td>
+            <td><input  (change)="changeCountProductPurchase(product, $event)" type="number" min="1"
+                       value="{{product.count}}"></td>
+            <td><input (change)="changePurchasePrice(product, $event)" type="number" min="1"
+                       value="{{product.pricePurchase.toFixed(1)}}"></td>
+            <td>{{product.amount.toFixed(1)}}</td>
+            <td (click)="removeProduct(product)" class="border-0 hover-class">X</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <button data-toggle="modal" data-target="#exampleModalScrollable" type="button" class="btn btn-warning btn-lg btn-block" >Добавить еще товары</button>
+
+
+  <app-add-product-form (addNewProduct)="addProduct($event)"></app-add-product-form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

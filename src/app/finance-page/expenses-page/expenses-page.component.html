@@ -1,0 +1,118 @@
+<div class="page-header">
+  <div class="row btn-add-new-my">
+    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Добавить
+        </button>
+        <div class="dropdown-menu"aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalScrollable">Новый расход</a>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="pageheader-title">Расходы</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/finance">Финансы</a></li>
+        <li class="breadcrumb-item active " aria-current="page">Расходы</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div class="email-inbox-header" style="margin-top: -2.5%">
+  <div class="row">
+    <div class="col-lg-6">
+      <select class="select-my" (change)="changeFilter($event)" >
+        <option value="За сегодня">За сегодня</option>
+        <option value="За вчера">За вчера</option>
+        <option value="За Неделю">За неделю</option>
+        <option value="За последний месяц">За последний месяц</option>
+        <option value="За последний год">За последний год</option>
+      </select>
+
+      <select class="select-my" (change)="changeCancellation($event)" >
+        <option value="Наличными">Наличные</option>
+        <option value="Безналично">Безналично</option>
+      </select>
+
+      <select class="select-my" (change)="changeState($event)" >
+        <option *ngFor="let state of stateExpense" value="{{state._id}}">{{state.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="email-search">
+        <div class="input-group input-search">
+
+          <input id="dateOt"   [(ngModel)]="dateOt"  value="{{dateOt}}"  class="form-control" type="date" >
+        </div>
+        <div class="email-search">
+          <div class="input-group input-search">
+            <input   [(ngModel)]="dateDo"   class="form-control" type="date" >
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div>
+      <button style="margin-top: 2%" (click)="changeDate()" type="button" class="btn btn-secondary">Применить фильтр</button>
+    </div>
+
+  </div>
+</div>
+
+<hr style="background-color: darkgrey">
+
+
+<div *ngIf="loading">
+  <app-loader></app-loader>
+</div>
+
+
+<div *ngIf="!loading">
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" *ngIf="!loading">
+  <div class="card shadow-sm h-100">
+    <h3  class="card-header bg-danger" style="color: whitesmoke; font-size: 16px; font-family: monospace">Расход за выбраный период</h3>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-light">
+          <tr class="border-0">
+            <th scope="col">Дата</th>
+            <th scope="col">Сумма</th>
+            <th scope="col">Статья</th>
+            <th scope="col">Нал/Безнал</th>
+            <th scope="col">Добавил</th>
+            <th scope="col">Описание</th>
+            <th>Х</th>
+          </tr>
+          </thead>
+          <tbody style="background-color: whitesmoke">
+          <tr style="font-weight: 700" *ngFor="let expense of expenses">
+            <td>{{expense.date | date: 'dd-MM-yyyy HH:mm:ss'}}</td>
+            <td style="color: red"> -{{expense.value.toFixed(1)}}</td>
+            <td>{{expense.stateExpense.name}}</td>
+            <td>{{expense.cancellation}}</td>
+            <td>{{expense.author.name}} {{expense.author.surname}}</td>
+            <td>{{expense.description}}</td>
+            <td class="hover-class" (click)="removeExpense(expense)" style="color: red">X</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<app-expenses-form
+  [stateExpense]="stateExpense"
+  (addExpense)="addExpense($event)"
+></app-expenses-form>

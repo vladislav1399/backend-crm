@@ -1,0 +1,22 @@
+tr, td {
+  padding: 3px;
+}
+
+thead > tr {
+  background-color: lightskyblue;
+  color: firebrick;
+  /*font-family: Verdana;*/
+  font: bold  110% Verdana;
+  font-size: 14px;
+}
+
+select {
+  width: 100%;
+  padding: 0px;
+}
+
+select > option {
+  width: 90%;
+}
+
+

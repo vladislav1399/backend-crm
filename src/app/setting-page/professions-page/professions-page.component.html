@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h2 class="pageheader-title">Должности</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" ><a routerLink="/setting">Настройки</a></li>
+        <li class="breadcrumb-item active">Должности</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="list-group" *ngIf="!loading">
+
+  <button
+    style="padding: 5px"
+    *ngFor="let profession of professions
+    let i = index"
+    type="button"
+    class="list-group-item list-group-item-action">
+    {{i + 1}}. {{profession.professionName}}
+    <span (click)="removeProfession(profession)" class="hover-class" style="float: right">X</span>
+  </button>
+
+</div>
+
+<form [formGroup]="formProfession" style="margin-top: 3%">
+  <div class="row">
+    <div style="align-content: center" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div  class="section-block " id="validation">
+      </div>
+      <div class="card mb-5 shadow-sm">
+        <h4 class="card-header bg-success">Форма добавления новой должности</h4>
+        <div class="card-body">
+            <label style="font-size: 20px" for="validationServer01">Введите Наименование должности</label>
+            <input
+              type="text"
+              class="form-control"
+              id="validationServer01"
+              formControlName="professionName">
+        </div>
+        <div class="card-body border-top">
+          <button
+            style="color: white"
+            class="btn btn-primary btn-block"
+            (click)="addNewProfession()"
+            [disabled]="formProfession.invalid || formProfession.disabled"
+          >Добавить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

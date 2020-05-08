@@ -1,0 +1,58 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+
+<div class="card shadow-sm h-100">
+  <h6  class="card-header bg-warning" style="color: brown; height: 35px">Товары и остатки</h6>
+  <div class="card-body" style="overflow:auto;">
+    <div class="table-responsive" style="margin-top: -1.5%">
+
+<table  class="table no-wrap p-table" *ngIf="!loading">
+  <thead class="bg-light">
+  <tr class="border-0">
+    <th class="border-0">Имя</th>
+    <th class="border-0">Цена</th>
+    <th class="border-0">Остаток</th>
+    <th class="border-0">Продажи</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let balance of balances" (click)="addToCart(balance.products)">
+    <td>{{balance.products.name}}</td>
+    <td>{{balance.products.purchasePrice.toFixed(1)}} грн.</td>
+    <td style="color: #0a3c93">{{balance.fullBalance}}</td>
+    <td style="color: #0a3c93">{{balance.saleCount }}</td>
+  </tr>
+  </tbody>
+
+</table>
+
+    </div>
+    </div>
+
+  <div class="card-footer">
+    <p  class="h1 font-weight-bold mb-0" style="text-align: center" >
+          <span style="width: 50%; " class="text-primary d-inline-block">
+
+            <label style="font-size: 11px" >
+<input value="Все товары"
+       (change)="filterCategory($event)"
+       style="font-size: 15px; width: 100%" [(ngModel)]="searchCategory"
+       placeholder="Все товары" list="category"
+       type="search">
+              Выберите категорию
+</label>
+
+              <datalist style="font-size: 15px; width: 100%"  id="category">
+                <option checked selected value="allCategories" id="allCategories">Все товары</option>
+                <option *ngFor="let category of categories" value="{{category._id}}">{{category.name}} </option>
+
+
+
+
+              </datalist>
+          </span>
+  </div>
+
+
+</div>

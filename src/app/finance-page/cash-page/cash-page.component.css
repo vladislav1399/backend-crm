@@ -1,0 +1,17 @@
+.table .thead-dark th {
+  background-color: #0d24ff;
+}
+
+.table td, .table th {
+  border-top: 1px solid black;
+}
+
+td{
+  padding: 5px;
+}
+
+.email-inbox-header{
+  height: 120px;
+}
+
+

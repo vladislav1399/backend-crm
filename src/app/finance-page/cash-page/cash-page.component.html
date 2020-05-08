@@ -1,0 +1,90 @@
+
+<div class="page-header">
+  <h2 class="pageheader-title">Касса</h2>
+  <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit ametsefwe vestibulum mi. Morbi lobortis pulvinar quam.</p>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/finance">Финансы</a></li>
+        <li class="breadcrumb-item active " aria-current="page">Касса</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+<div class="email-inbox-header" style="margin-top: -2.5%">
+  <div class="row">
+
+    <div class="col-lg-6">
+      <select class="select-my" (change)="changeFilter($event)">
+        <option value="За сегодня">За сегодня</option>
+        <option value="За вчера">За вчера</option>
+        <option value="За Неделю">За неделю</option>
+        <option value="За последний месяц">За последний месяц</option>
+        <option value="За последний год">За последний год</option>
+      </select>
+    </div>
+
+    <div class="col-lg-4" style="margin-top: -55px">
+      <div class="email-search">
+        <div class="input-group input-search">
+          <input id="dateOt" [(ngModel)]="dateOt"  value="{{dateOt}}"  class="form-control" type="date" >
+        </div>
+
+          <div class="input-group input-search">
+            <input [(ngModel)]="dateDo" class="form-control" type="date" >
+          </div>
+
+
+        <div class="input-group input-search">
+          <button style="margin-top: 2%" (click)="changeDate()" type="button" class="btn btn-secondary">Применить фильтр</button>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<hr style="background-color: darkgrey">
+
+
+
+<app-loader *ngIf="loading"></app-loader>
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-5" *ngIf="!loading">
+  <div class="card shadow-sm h-100">
+    <h4  class="card-header bg-success">Кассы за выбраный период</h4>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="bg-light">
+          <tr class="border-0">
+            <th scope="col">Дата</th>
+            <th scope="col">Баланс на начало дня</th>
+            <th scope="col">Остаток на конец дня
+            <th scope="col">Изменения за день</th>
+            <th scope="col">Баланс</th>
+          </tr>
+          </thead>
+
+          <tbody style="background-color: whitesmoke">
+          <tr style="font-weight: 700" *ngFor="let cash of cashes  | paginate:{itemsPerPage: 30, currentPage:p}">
+            <td>{{cash.dateCash | date: 'dd-MM-yyyy'}}</td>
+            <td>{{cash.balanceBeginning.toFixed(1)}}</td>
+            <td>{{cash.balanceEnding.toFixed(1)}}</td>
+            <td>{{cash.changesDay.toFixed(1)}}</td>
+            <td>{{cash.balanceCash.toFixed(1)}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<pagination-controls class="ngx-pagination" (pageChange)="p=$event"></pagination-controls>

@@ -1,0 +1,88 @@
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="row" *ngIf="!loading">
+  <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="bg-light">
+            <tr class="border-0">
+              <th class="border-0">Имя </th>
+              <th class="border-0">Кол.</th>
+              <th class="border-0">Цена</th>
+              <th class="border-0">Скидка</th>
+              <th class="border-0">Сумма скидки</th>
+              <th class="border-0">Сумма</th>
+              <th class="border-0">X</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let product of productsSale">
+              <td>{{product.name}}</td>
+              <td>
+                <input class="inp-count"
+                       (change)="changeCountProductSale(product, $event)"
+                       type="number" min="0"
+                       value="{{product.count}}">
+              </td>
+              <td>
+                <input
+                  class="inp-count"
+                  (change)="changeSalePrice(product, $event)"
+                  type="number" min="0"
+                  value="{{product.priceSale.toFixed(1)}}">
+              </td>
+
+              <td>
+                <input
+                  class="inp-count"
+                  (change)="changeDiscount(product, $event)"
+                  type="number" min="0"
+                  value="{{product.discount}}">
+              </td>
+
+              <td>{{product.discountAmount.toFixed(1)}}</td>
+
+              <td>{{product.amount.toFixed(1)}}</td>
+
+
+              <td (click)="removeProduct(product)" class="border-0 hover-class">X</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <button data-toggle="modal" data-target="#exampleModalScrollable" type="button" class="btn btn-warning btn-space btn-block" >Добавить еще товары</button>
+    </div>
+
+
+    <app-add-product-form (addNewProduct)="addProduct($event)"></app-add-product-form>
+
+  </div>
+  <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+
+    <div class="card shadow-sm h-100">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+
+
+
+          <div style="margin-top: 10%">
+            <a (click)="saveSale()" type="button" class="btn btn-primary btn-lg btn-block" style="color: yellow">Сохранить</a>
+            <a (click)="removeSale()" type="button" class="btn btn-danger btn-lg btn-block" style="color: whitesmoke">Удалить</a>
+          </div>
+          <hr style="background-color: blue">
+          <h5 style="text-align: center; color: #0d24ff;  margin-top: 3%; font-size: 16px; font-weight: 700; letter-spacing: 2px">Общая: {{allAmountWithoutDiscount.toFixed(1)}} грн.</h5>
+          <h5 style="text-align: center; color: red; margin-top: 3%; font-size: 16px; font-weight: 700; letter-spacing: 2px">Скидка: {{allDiscountAmount.toFixed(1)}} грн.</h5>
+          <hr>
+          <h4 style="text-align: center; color: green; font-size: 16px; font-weight: 700; font-family: Arial; margin-top: 3%; font-size: 16px; font-weight: 700; letter-spacing: 2px">Итого: {{allAmount.toFixed(1)}} грн.</h4>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

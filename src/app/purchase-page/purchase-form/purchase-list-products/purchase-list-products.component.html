@@ -1,0 +1,47 @@
+
+
+
+<table class="table" *ngIf="productsPurchase">
+  <thead class="bg-light">
+  <tr>
+    <th>№</th>
+    <th>Имя</th>
+    <th>Количество</th>
+    <th>Цена</th>
+    <th>Сумма</th>
+    <th>X</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of productsPurchase; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ product.name }}</td>
+
+    <td>
+      <input
+        class="inp-count"
+        (change)="changeCount(product, $event)"
+        (keyup)="changeCount(product, $event)"
+        type="number" min="1"
+        value="{{ product.count }}">
+    </td>
+
+    <td>
+      <input
+        (change)="changePurchasePrice(product, $event)"
+        (keyup)="changePurchasePrice(product, $event)"
+        style="height: 18px; width: 65px; text-align: center"
+        type="number" min="1"
+        value="{{ product.pricePurchase.toFixed(1) }}">
+    </td>
+
+
+
+    <td>{{ product.amount.toFixed(1) }} грн.</td>
+    <td class="hover-class" (click)="removeProduct(product)">X</td>
+  </tr>
+  </tbody>
+</table>
+
+
+

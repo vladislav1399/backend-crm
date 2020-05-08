@@ -1,0 +1,65 @@
+
+<app-product-nav>
+</app-product-nav>
+
+
+<div class="page-header">
+  <h2 class="pageheader-title">Товары</h2>
+  <div class="page-breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active " aria-current="page"><a routerLink="/category">Категории</a></li>
+        <li class="breadcrumb-item active " aria-current="page">Товары</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+
+
+
+<app-product-form
+  [brands]="brands"
+  (addNewProduct)="addNewProduct($event)"
+  [categories]="categories"
+>
+</app-product-form>
+
+<app-loader *ngIf="loading"></app-loader>
+
+<div class="row">
+  <div  class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+  <div class="card shadow-sm" style="height: 500px;" >
+    <div class="card-header" style="background-color: #00ff80">
+      <h3 class="mb-0"> Категории</h3>
+    </div>
+    <div class="card-body"  style="overflow: auto">
+      <app-category-list
+        (getByCategoryId)="getByCategoryId($event)"
+        [categories]="categories"
+      >
+      </app-category-list>
+    </div>
+  </div>
+</div>
+  <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 mb-4">
+    <div class="card shadow-sm" style="height: 500px">
+      <h3 class="card-header" style="background-color: #b2c326">Товары</h3>
+      <div class="card-body p-0" style="overflow: auto" >
+    <app-product-list  *ngIf="!loading" [products]="products">
+    </app-product-list>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

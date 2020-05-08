@@ -1,0 +1,10 @@
+.inp-supplier{
+  height: 30px;
+}
+
+
+span:hover{
+  cursor: pointer;
+  font-weight: 800;
+  color: green;
+}

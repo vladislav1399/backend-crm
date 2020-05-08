@@ -1,0 +1,11 @@
+td, th {
+  padding: 8px;
+}
+
+tr{
+  border-bottom: 4px solid gainsboro;
+}
+
+.badge{
+  font-size: 14px;
+}
